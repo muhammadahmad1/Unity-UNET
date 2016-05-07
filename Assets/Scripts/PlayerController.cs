@@ -1,4 +1,5 @@
 using UnityEngine;
+using CnControls;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(ConfigurableJoint))]
@@ -62,8 +63,8 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Calculate movement velocity as a 3D vector
-		float _xMov = Input.GetAxis("Horizontal");
-		float _zMov = Input.GetAxis("Vertical");
+		float _xMov = CnInputManager.GetAxis("Horizontal");
+		float _zMov = CnInputManager.GetAxis("Vertical");
 
 		Vector3 _movHorizontal = transform.right * _xMov;
 		Vector3 _movVertical = transform.forward * _zMov;
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Calculate the thrusterforce based on player input
 		Vector3 _thrusterForce = Vector3.zero;
-		if (Input.GetButton ("Jump") && thrusterFuelAmount > 0f)
+		if (CnInputManager.GetButton ("Jump") && thrusterFuelAmount > 0f)
 		{
 			thrusterFuelAmount -= thrusterFuelBurnSpeed * Time.deltaTime;
 

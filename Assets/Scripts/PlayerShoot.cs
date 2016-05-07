@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Networking;
+using CnControls;
 
 [RequireComponent (typeof (WeaponManager))]
 public class PlayerShoot : NetworkBehaviour {
@@ -32,16 +33,16 @@ public class PlayerShoot : NetworkBehaviour {
 
 		if (currentWeapon.fireRate <= 0f)
 		{
-			if (Input.GetButtonDown("Fire1"))
+			if (CnInputManager.GetButtonDown("Fire3"))
 			{
 				Shoot();
 			}
 		} else
 		{
-			if (Input.GetButtonDown("Fire1"))
+			if (CnInputManager.GetButtonDown("Fire3"))
 			{
 				InvokeRepeating("Shoot", 0f, 1f/currentWeapon.fireRate);
-			} else if (Input.GetButtonUp ("Fire1"))
+			} else if (CnInputManager.GetButtonUp ("Fire3"))
 			{
 				CancelInvoke("Shoot");
 			}
